@@ -1,0 +1,17 @@
+name: compGates1
+
+
+
+on:
+   push: 
+     branches: [ "main" ]
+
+jobs:
+  DummyJob_Merge:
+    runs-on: self-hosted
+    steps:
+      - name: DummyRun
+        run: |
+          echo "PR was merged into the main branch!"
+          echo "Run ID: ${{ github.run_id }}"
+          echo "Run Number: ${{ github.run_number }}"
