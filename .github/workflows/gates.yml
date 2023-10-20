@@ -6,12 +6,19 @@ on:
    push: 
      branches: [ "main" ]
 
+on: 
+  workflow_dispatch:
+
 jobs:
-  DummyJob_Merge:
+  merge:
     runs-on: self-hosted
     steps:
-      - name: DummyRun
+      - name: Check if PR is merged into main
         run: |
           echo "PR was merged into the main branch!"
+          echo "Merge Commit SHA: ${{ github.event.pull_request.merge_commit_sha }}"
+          echo "PR URL: ${{ github.event.pull_request.html_url }}"
           echo "Run ID: ${{ github.run_id }}"
+          echo "Run URL: ${{ github.run_url }}"
           echo "Run Number: ${{ github.run_number }}"
+          echo "Current Datetime: ${{ steps.current_datetime.outputs.current_datetime }}"
